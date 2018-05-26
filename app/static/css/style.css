@@ -1,0 +1,61 @@
+.jambotron {
+    padding-top: 10px;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    margin-top: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+.text-topic {
+    padding: 0.5rem;
+}
+
+.text-dark {
+    color: #343a40!important;
+}
+
+.blog-header-logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.25rem;
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+    background-color: transparent;
+}
+
+#info-card {
+    padding: 3rem;
+}
+
+#topics {
+    margin-bottom: .5rem;
+}
+
+.blog-header {
+    line-height: 1;
+    border-bottom: 1px solid #e5e5e5;
+}
+.pb-3, .py-3 {
+    padding-bottom: 1rem!important;
+}
+
+.align-items-center {
+    -ms-flex-align: center!important;
+    align-items: center!important;
+}
+.justify-content-between {
+    -ms-flex-pack: justify!important;
+    justify-content: space-between!important;
+}
+.flex-nowrap {
+    -ms-flex-wrap: nowrap!important;
+    flex-wrap: nowrap!important;
+}

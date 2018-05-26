@@ -1,9 +1,8 @@
-{% extends "base.html" %} 
-{% block content %}
-<div class="container">
-    <h1>Login</h1>
-    <form action="" method="post">
+{% extends "base.html" %} {% block content %}
+<section class="text-center">
+    <form action="" method="post" class="login-form">
         {{ form.hidden_tag() }}
+        <h1>Login</h1>
         <p>
             {{ form.login.label }}
             <br> {{ form.login(size=32) }}
@@ -15,5 +14,5 @@
         <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
         <p>{{ form.submit(class="btn btn-primary") }}</p>
     </form>
-</div>
+</section>
 {% endblock content %}
