@@ -18,12 +18,22 @@
         </div>
     </header>
     <nav class="nav row text-center" id="topics">
-        <a class="text-topic text-muted col" href="#">Posts</a>
-        <a class="text-topic text-muted col" href="#">Topics</a>
-        <a class="text-topic text-muted col" href="#">Links</a>
-        <a class="text-topic text-muted col" href="#">About me</a>
+            <a class="text-topic text-muted col" href="/index">Posts</a>
+            <a class="text-topic text-muted col" href="/topics">Topics</a>
+            <a class="text-topic text-muted col" href="/links">Links</a>
+            <a class="text-topic text-muted col" href="/about">About me</a>
     </nav>
 </div>
-{% endblock navbar%} 
-{% block content %} 
-{% endblock content%}
+{% endblock navbar %} 
+<hr>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+{% block content %}
+{% endblock %}
