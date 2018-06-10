@@ -1,24 +1,28 @@
 {% extends "base.html" %} {% block content %}
-<section class="text-center">
+    <div class="col"></div>
+<section class="col">
     <form action="" method="post" class="login-form">
         {{ form.hidden_tag() }}
         <h1>Login</h1>
-        <p>
+        <div class="form-group">
             {{ form.login.label }}
-            <br> {{ form.login(size=32) }}
+            <br> {{ form.login(size=32, class="form-control", placeholder='Enter Login') }}
             <br>    {% for error in form.password.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p>
+        </div>
+        <div class="form-group">
             {{ form.password.label }}
-            <br> {{ form.password(size=32) }}
+            <br> {{ form.password(size=32, class="form-control", placeholder='Enter Password') }}
             <br>    {% for error in form.password.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit(class="btn btn-primary") }}</p>
+        </div>
+        <div class="form-group">
+            {{ form.remember_me()}}
+            {{ form.remember_me.label }}</div>
+        {{ form.submit(class="btn btn-primary") }}
     </form>
 </section>
+    <div class="col"></div>
 {% endblock content %}

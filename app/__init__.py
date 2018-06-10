@@ -13,8 +13,8 @@ app.debug = True
 app.testing = True
 app.config.from_object(Config)
 bootstrap = Bootstrap(app)
-Misaka(app)
-SimpleMDE(app)
+app.config['SIMPLEMDE_JS_IIFE'] = True
+app.config['SIMPLEMDE_USE_CDN'] = True
 login = LoginManager(app)
 login.login_view = 'login'
 db = SQLAlchemy(app)

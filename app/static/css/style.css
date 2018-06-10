@@ -14,11 +14,21 @@
 }
 
 .text-topic {
-    padding: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 .text-dark {
     color: #343a40!important;
+}
+
+.text-muted-light {
+    color: #c8cacc!important;
+}
+
+.rounded {
+    border-radius: .25rem!important;
 }
 
 .blog-header-logo {
