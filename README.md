@@ -1,0 +1,1 @@
+Small blog's realisation on Python and few frameworks
