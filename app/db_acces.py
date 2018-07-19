@@ -14,12 +14,8 @@ def create_new_post(title, short, body, time, author):
 
 
 def get_topic(name):
-    try:
-        topic = Topic.query.filter_by(name=name).first_or_404()
-    except exceptions.NotFound:
-        return None
-    else:
-        return topic
+    # TODO: make uppercase
+    return Topic.query.filter_by(name=name).first_or_404()
 
 
 def create_or_get_topic(name):

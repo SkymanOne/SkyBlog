@@ -105,3 +105,11 @@ venv.bak/
 
 # vs code
 .vscode
+/venv/
+/app/static/js/tinymce/
+
+# idea
+.idea
+app/static/js/
+
+*.db

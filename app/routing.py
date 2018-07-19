@@ -7,20 +7,32 @@ from app.models import User
 from app.forms import *
 from app.db_acces import *
 
+post_schema = PostSchema(many=True)
+
 
 @app.route('/')
 @app.route('/index')
 def index():
     # TODO: create getting certain count of posts
     posts_list = Post.query.select_from().order_by(-Post.id).limit(10)
-    text = posts_list[0].body
+    try:
+        text = posts_list[0].body
+    except IndexError:
+        text = ''
     return render_template('index.html', text=text)
 
 
-@app.route('/<int:count>', methods=['POST'])
+@app.route('/<int:count>', methods=['POST', 'GET'])
 def get_more_posts(count):
+    list_of_posts = Post.query.filter(Post.id > count).limit(5)
+    return jsonify({'posts': post_schema.dump(list_of_posts).data})
 
-    return jsonify(count)
+
+@app.route('/test', methods=['POST', 'GET'])
+def test():
+    post = Post.query.filter(Post.id > 5).limit(5)
+    # TODO: end json queries
+    return jsonify({'posts': post_schema.dump(post).data})
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -59,6 +71,7 @@ def write_new_post():
                 topic = create_or_get_topic(t)
                 topic.posts.append(post)
             db.session.commit()
+            # TODO: create template for result of creating
             return "Success!"
         else:
             flash('Error of creating')
