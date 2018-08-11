@@ -1,23 +1,30 @@
 {% extends "base.html" %} {% block content %}
 <div class="container">
-    <section class="text-center">
-        <div class="jumbotron" id="info-card">
-                {% if current_user.is_authenticated %}
-                    <h1 class="display-4">Hello, {{current_user.username}}!</h1>
-                    {% else %}
-                    <h1 class="display-4">Hello, guest!</h1>
-                {% endif %}
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content
-                or information.
-            </p>
-            <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    <div class="row">
+        {% if post_list is not none %}
+        <div class="col-md-6">
+            <div class="jumbotron" id="info-card">
+                <h2 class="recent-posts-heading mb-0">{{posts[0].title}}</h1>
+                <div class="text-muted">{{posts[0].time.date()}}</div>
+                {{posts[0].short | safe}}
+                <hr class="white-color">
+                <a class="btn btn-info btn-lg" href="#" role="button">Read more...</a>
+            </div>
         </div>
-        <div class="container">
-            <!--TODO: AJAX requests for posts-->
-            {{ text| safe }}
-        </div>
-    </section>
+        <div class="col-md-6">
+                <div class="jumbotron" id="info-card">
+                    <h2 class="recent-posts-heading">{{posts[1].title}}</h1>
+                    <div class="text-muted">{{posts[1].time.date()}}</div>
+                    {{posts[1].short | safe}}
+                    <hr class="white-color">
+                    <a class="btn btn-info btn-lg" href="#" role="button">Read more...</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+<div class="container">
+    <!--TODO: AJAX requests for posts-->
+    {{ text| safe }}
 </div>
 {% endblock content %}

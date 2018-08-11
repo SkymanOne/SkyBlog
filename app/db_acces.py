@@ -14,8 +14,7 @@ def create_new_post(title, short, body, time, author):
 
 
 def get_topic(name):
-    # TODO: make uppercase
-    return Topic.query.filter_by(name=name).first_or_404()
+    return Topic.query.filter_by(name=name).first()
 
 
 def create_or_get_topic(name):

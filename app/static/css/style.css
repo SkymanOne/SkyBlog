@@ -2,6 +2,22 @@
     padding-top: 10px;
 }
 
+.white-color {
+    color: white;
+}
+
+.mb-0 {
+    margin-bottom: 0!important;
+}
+
+#success {
+    margin: 15% 0% 15% 0%;
+}
+
+.recent-posts-heading {
+    font-family: "Playfair Display SC"!important;
+}
+
 .login-form {
     width: 100%;
     max-width: 330px;
