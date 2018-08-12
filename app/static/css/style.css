@@ -6,8 +6,26 @@
     color: white;
 }
 
+.text-muted-bright {
+    color: #d4d4d4!important;
+}
+
+.anton {
+    font-family: 'Anton', sans-serif;
+}
+
 .mb-0 {
     margin-bottom: 0!important;
+}
+
+#title-new {
+    margin: 15% 0;
+    font-size: 3rem;
+}
+
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
 }
 
 #success {

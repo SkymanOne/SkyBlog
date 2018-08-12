@@ -4,27 +4,46 @@
         {% if post_list is not none %}
         <div class="col-md-6">
             <div class="jumbotron" id="info-card">
-                <h2 class="recent-posts-heading mb-0">{{posts[0].title}}</h1>
-                <div class="text-muted">{{posts[0].time.date()}}</div>
-                {{posts[0].short | safe}}
+                <h3 class="recent-posts-heading">
+                    <strong>{{posts[1].title}}</strong>
+                </h3>
+                <div class="text-muted">{{posts[1].time.date()}}</div>
+                {{posts[1].short | safe}}
                 <hr class="white-color">
                 <a class="btn btn-info btn-lg" href="#" role="button">Read more...</a>
             </div>
         </div>
         <div class="col-md-6">
-                <div class="jumbotron" id="info-card">
-                    <h2 class="recent-posts-heading">{{posts[1].title}}</h1>
-                    <div class="text-muted">{{posts[1].time.date()}}</div>
-                    {{posts[1].short | safe}}
+            <div class="jumbotron" id="info-card">
+                <h3 class="recent-posts-heading">{{posts[2].title}}</h1>
+                    <div class="text-muted">{{posts[2].time.date()}}</div>
+                    {{posts[2].short | safe}}
+                    <hr class="white-color">
+                    <a class="btn btn-info btn-lg" href="#" role="button">Read more...</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="jumbotron bg-dark text-white">
+        <div style="padding: 0 2%">
+            <div class="row">
+                <div class="col-md-7">
+                    <h1 class="recent-posts-heading">
+                        <strong>{{posts[0].title}}</strong>
+                    </h1>
+                    <div class="text-muted-bright">{{posts[0].time.date()}}</div>
+                    <div class="lead">{{posts[0].short | safe}}</div>
                     <hr class="white-color">
                     <a class="btn btn-info btn-lg" href="#" role="button">Read more...</a>
                 </div>
+                <div style="margin: 15% 0;" class="col-md-5 text-center">
+                        <p class="anton" id="title-new">Newest one!</p>
+                    </div>
             </div>
-        {% endif %}
+        </div>
     </div>
 </div>
 <div class="container">
     <!--TODO: AJAX requests for posts-->
-    {{ text| safe }}
 </div>
 {% endblock content %}
