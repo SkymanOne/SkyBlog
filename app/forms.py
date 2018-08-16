@@ -12,7 +12,7 @@ class LoginForm(FlaskForm):
 
 class NewPostForm(FlaskForm):
     title = StringField('Title', [validators.required()])
-    short = StringField('Short description')
+    short = StringField('Short description', [validators.Length(min=10, max=130)])
     content = StringField('Content', [validators.required()])
     topics = StringField('Topics')
     submit = SubmitField('Publish')
