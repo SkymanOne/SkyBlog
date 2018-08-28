@@ -27,6 +27,16 @@ def get_more_posts(count):
     return jsonify({'posts': post_schema.dump(list_of_posts).data})
 
 
+@app.route('/<string:title>', methods=['GET'])
+def post_page(title):
+    post = get_post(title)
+    if post is not None:
+        return render_template('post.html', title=post.title, short=post.short,
+                               content=post.body)
+    else:
+        return "404"
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:

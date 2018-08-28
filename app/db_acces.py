@@ -24,3 +24,7 @@ def create_or_get_topic(name):
         db.session.add(topic)
         db.session.commit()
     return topic
+
+
+def get_post(title):
+    return Post.query.filter_by(title=title).first()
