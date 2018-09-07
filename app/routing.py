@@ -14,10 +14,6 @@ post_schema = PostSchema(many=True)
 @app.route('/index')
 def index():
     posts_list = Post.query.order_by(-Post.id).limit(10)
-    try:
-        text = posts_list[0].body
-    except IndexError:
-        text = ''
     return render_template('index.html', posts=posts_list)
 
 
@@ -27,12 +23,12 @@ def get_more_posts(count):
     return jsonify({'posts': post_schema.dump(list_of_posts).data})
 
 
-@app.route('/<string:title>', methods=['GET'])
+@app.route('/<path:title>', methods=['GET'])
 def post_page(title):
     post = get_post(title)
     if post is not None:
         return render_template('post.html', title=post.title, short=post.short,
-                               content=post.body)
+                               content=post.body, time=post.time.date())
     else:
         return "404"
 
