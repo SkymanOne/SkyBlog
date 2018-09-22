@@ -7,13 +7,13 @@ This projects is made for practice programming skills. I decided to develop it o
 ## Goals
 * Login system (**done**)
 * Post system
-	* Creation posts 🛠 (**done**)
+	* Creating posts 🛠 (**done**)
 	* Editing posts 📝 
 	* Deleting posts ❌
 	* Tag system 📲 (**done**)
 	* Search by tags and names
 * Ajax queries
-* Comments
+* Comments (**done**)
 * Page about myself
 * Material design 
 
