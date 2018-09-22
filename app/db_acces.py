@@ -4,7 +4,8 @@ from app import db
 
 def create_new_post(title, short, body, time, author):
     try:
-        new_post = Post(title=title, short=short, body=body,
+        url = title.replace(' ', '_')
+        new_post = Post(title=title, url=url, short=short, body=body,
                         time=time, author=author)
         db.session.add(new_post)
         db.session.commit()
@@ -26,5 +27,5 @@ def create_or_get_topic(name):
     return topic
 
 
-def get_post(title):
-    return Post.query.filter_by(title=title).first()
+def get_post(url):
+    return Post.query.filter_by(url=url).first()

@@ -23,9 +23,9 @@ def get_more_posts(count):
     return jsonify({'posts': post_schema.dump(list_of_posts).data})
 
 
-@app.route('/<path:title>', methods=['GET'])
-def post_page(title):
-    post = get_post(title)
+@app.route('/<path:url>', methods=['GET'])
+def post_page(url):
+    post = get_post(url)
     if post is not None:
         return render_template('post.html', title=post.title, short=post.short,
                                content=post.body, time=post.time.date())
