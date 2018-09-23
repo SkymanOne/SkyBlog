@@ -14,6 +14,20 @@ def create_new_post(title, short, body, time, author):
     return new_post
 
 
+def edit_post_data(url, title, short, body):
+    post = get_post(url)
+    if post is not None:
+        post.title = title
+        post.url = title.replace(' ', '_')
+        post.short = short
+        post.body = body
+        post.topics = []
+        db.session.commit()
+        return post
+    else:
+        return None
+
+
 def get_topic(name):
     return Topic.query.filter_by(name=name).first()
 

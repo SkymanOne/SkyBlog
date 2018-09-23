@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}New post{% endblock title %}
+{% block title %}Edit post{% endblock title %}
 {% block content %}
     <div class="container">
         <form method="post" class="form" action="">
@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 {{ form.body.label(class="col-form-label") }} <br>
-                {{ form.content(class="form-control", type="textarea") }} <br>
+                {{ form.body(class="form-control", type="textarea") }} <br>
                 {% for error in form.body.errors %}
                 <span style="color: red;">{{ error }}</span>
                 {% endfor %}

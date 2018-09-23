@@ -5,7 +5,7 @@
     <title>{% block title %}SkyBlog{% endblock %}</title>
     <script src={{ url_for('.static', filename='js/tinymce/tinymce.min.js')}}></script>
     <script>tinymce.init({
-        selector:'#content, #short',
+        selector:'#body, #short',
         theme: 'modern',
         plugins: 'advlist autolink link image lists charmap print preview'});
     </script>
@@ -61,7 +61,7 @@
     {% block footer %}
     <p class="text-muted">Made by German Nikolishin <strong>(SkymanOne)</strong> in 2018</p>
     <p>
-        <a href="/index/#">Back to top</a>
+        <a href="#">Back to top</a>
     </p>
     {% endblock footer %}
 </footer>

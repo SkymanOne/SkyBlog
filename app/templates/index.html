@@ -36,7 +36,7 @@
                     <div class="text-muted-bright">{{posts[0].time.date() | datetime}}</div>
                     <div class="lead">{{posts[0].short | safe}}</div>
                     <hr class="white-color">
-                    <a class="btn btn-info btn-lg" href="/{{posts[0].url}}" role="button">Read more...</a>
+                    <a class="btn btn-info btn-lg" href=" {{  url_for('post_page', url=posts[0].url) }} " role="button">Read more...</a>
                 </div>
                 <div style="margin: 60px 0;" class="col-md-5 text-center">
                         <p class="anton" id="title-new">Newest one!</p>

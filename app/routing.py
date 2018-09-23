@@ -28,7 +28,7 @@ def post_page(url):
     post = get_post(url)
     if post is not None:
         return render_template('post.html', title=post.title, short=post.short,
-                               content=post.body, time=post.time.date())
+                               content=post.body, time=post.time.date(), url=post.url)
     else:
         return "404"
 
@@ -60,9 +60,9 @@ def logout():
 @app.route('/new_post', methods=['GET', 'POST'])
 @login_required
 def write_new_post():
-    form = NewPostForm()
+    form = PostForm()
     if form.validate_on_submit():
-        post = create_new_post(form.title.data, form.short.data, form.content.data, datetime.utcnow(),
+        post = create_new_post(form.title.data, form.short.data, form.body.data, datetime.utcnow(),
                                User.query.get(1))
         if post is not None:
             for t in separate_topics(form.topics.data):
@@ -75,6 +75,30 @@ def write_new_post():
             return render_template('new_post.html', form=form)
     else:
         return render_template('new_post.html', form=form)
+
+
+@app.route('/edit/<string:url>', methods=['GET', 'POST'])
+@login_required
+def edit_post(url):
+    post = get_post(url)
+    if post is not None:
+        form = PostForm(obj=post)
+        old_url = post.url
+        post_topics_list = list()
+        for t in post.topics:
+            post_topics_list.append(t.name)
+        form.topics.data = ' '.join(post_topics_list)
+        if form.validate_on_submit():
+            edit_post_data(old_url, form.title.data, form.short.data, form.body.data)
+            for t in separate_topics(form.topics.data):
+                topic = create_or_get_topic(t)
+                topic.posts.append(post)
+            db.session.commit()
+            return redirect('/success')
+        else:
+            return render_template('edit.html', form=form)
+    else:
+        return "404"
 
 
 @app.route('/success')

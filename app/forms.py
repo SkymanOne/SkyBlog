@@ -10,9 +10,9 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Sign In')
 
 
-class NewPostForm(FlaskForm):
+class PostForm(FlaskForm):
     title = StringField('Title', [validators.required()])
     short = StringField('Short description', [validators.Length(min=10, max=130)])
-    content = StringField('Content', [validators.required()])
+    body = StringField('Content', [validators.required()])
     topics = StringField('Topics')
     submit = SubmitField('Publish')
