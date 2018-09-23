@@ -77,9 +77,9 @@ def write_new_post():
         return render_template('new_post.html', form=form)
 
 
-@app.route('/edit/<string:url>', methods=['GET', 'POST'])
+@app.route('/edit/<string:url>', methods=['GET'])
 @login_required
-def edit_post(url):
+def get_edit_post(url):
     post = get_post(url)
     if post is not None:
         form = PostForm(obj=post)
@@ -88,17 +88,26 @@ def edit_post(url):
         for t in post.topics:
             post_topics_list.append(t.name)
         form.topics.data = ' '.join(post_topics_list)
-        if form.validate_on_submit():
-            edit_post_data(old_url, form.title.data, form.short.data, form.body.data)
-            for t in separate_topics(form.topics.data):
-                topic = create_or_get_topic(t)
-                topic.posts.append(post)
-            db.session.commit()
-            return redirect('/success')
-        else:
-            return render_template('edit.html', form=form)
+        db.session.commit()
+        return render_template('edit.html', form=form)
     else:
         return "404"
+
+
+@app.route('/edit/<string:url>', methods=['POST'])
+@login_required
+def post_edit_post(url):
+    form = PostForm()
+    post = get_post(url)
+    old_url = post.url
+    if form.validate_on_submit():
+        edit_post_data(old_url, form.title.data, form.short.data, form.body.data)
+        for t in separate_topics(form.topics.data):
+            topic = create_or_get_topic(t)
+            topic.posts.append(post)
+        db.session.commit()
+        return redirect('/success')
+    return render_template('edit.html', form=form)
 
 
 @app.route('/success')

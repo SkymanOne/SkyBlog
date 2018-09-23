@@ -14,5 +14,5 @@ class PostForm(FlaskForm):
     title = StringField('Title', [validators.required()])
     short = StringField('Short description', [validators.Length(min=10, max=130)])
     body = StringField('Content', [validators.required()])
-    topics = StringField('Topics')
+    topics = StringField('Topics list')
     submit = SubmitField('Publish')

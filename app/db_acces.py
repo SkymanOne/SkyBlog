@@ -21,7 +21,8 @@ def edit_post_data(url, title, short, body):
         post.url = title.replace(' ', '_')
         post.short = short
         post.body = body
-        post.topics = []
+        for t in post.topics:
+            post.topics.remove(t)
         db.session.commit()
         return post
     else:
