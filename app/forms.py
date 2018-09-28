@@ -16,3 +16,8 @@ class PostForm(FlaskForm):
     body = StringField('Content', [validators.required()])
     topics = StringField('Topics list')
     submit = SubmitField('Publish')
+
+
+class DeleteForm(FlaskForm):
+    confirmation = StringField('Confiramtion', [validators.required()])
+    submit = SubmitField('Delete')

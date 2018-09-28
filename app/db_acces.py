@@ -29,6 +29,17 @@ def edit_post_data(url, title, short, body):
         return None
 
 
+def delete_post_from_db(url):
+    post = get_post(url)
+    if post is not None:
+        post.topics = []
+        db.session.delete(post)
+        db.session.commit()
+        return True
+    else:
+        return False
+
+
 def get_topic(name):
     return Topic.query.filter_by(name=name).first()
 

@@ -8,6 +8,7 @@ from app.forms import *
 from app.db_acces import *
 
 post_schema = PostSchema(many=True)
+# TODO: make 404 page
 
 
 @app.route('/')
@@ -110,6 +111,37 @@ def post_edit_post(url):
     return render_template('edit.html', form=form)
 
 
+@app.route('/delete/<string:url>', methods=['GET'])
+@login_required
+def delete_post(url):
+    post = get_post(url)
+    if post is not None:
+        form = DeleteForm()
+        return render_template('delete.html', form=form, name=post.title)
+    else:
+        return '404'
+
+
+@app.route('/delete/<string:url>', methods=['POST'])
+@login_required
+def post_delete_post(url):
+    form = DeleteForm()
+    if form.validate_on_submit():
+        post = get_post(url)
+        title = post.title
+        if title == form.confirmation.data:
+            result = delete_post_from_db(post.url)
+            db.session.commit()
+            if result:
+                result_title = 'Done!'
+                result_text = 'The post is successfully deleted'
+            else:
+                result_text = 'Fail!'
+                result_text = 'Something happend wrong'
+            return render_template('result.html', result_title=result_title, result_text=result_text)
+    return render_template('delete.html', form=form, name=post.title)
+
+
 @app.route('/success')
 def success():
     result_title = 'Success!'
@@ -135,6 +167,9 @@ def info_of_topic(topic_name):
 @app.route('/about')
 def about():
     return 'about'
+
+
+# Help methods
 
 
 def separate_topics(string):
