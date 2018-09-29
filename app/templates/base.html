@@ -4,6 +4,7 @@
 {% block head %}
     <title>{% block title %}SkyBlog{% endblock %}</title>
     <script src={{ url_for('.static', filename='js/tinymce/tinymce.min.js')}}></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>tinymce.init({
         selector:'#body, #short',
         theme: 'modern',

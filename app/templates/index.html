@@ -12,16 +12,18 @@
                 <div class="text-muted">{{ posts[1].time.date() | datetime}}</div>
                 {{posts[1].short | safe}}
                 <hr class="white-color">
-                <a class="btn btn-info btn-lg" href=" {{  url_for('post_page', url=posts[1].url) }} " role="button">Read more...</a>
+                <a class="btn btn-info btn-lg" href=" {{  url_for('post_page', url=posts[1].url) }} " role="button">Read
+                    more...</a>
             </div>
         </div>
         <div class="col-md-6">
             <div class="jumbotron" id="info-card">
                 <h3 class="Playfair">{{posts[2].title}} </h3>
-                    <div class="text-muted">{{posts[2].time.date() | datetime}}</div>
-                    {{posts[2].short | safe}}
-                    <hr class="white-color">
-                    <a class="btn btn-info btn-lg" href=" {{  url_for('post_page', url=posts[2].url) }} " role="button">Read more...</a>
+                <div class="text-muted">{{posts[2].time.date() | datetime}}</div>
+                {{posts[2].short | safe}}
+                <hr class="white-color">
+                <a class="btn btn-info btn-lg" href=" {{  url_for('post_page', url=posts[2].url) }} " role="button">Read
+                    more...</a>
             </div>
         </div>
         {% endif %}
@@ -36,16 +38,41 @@
                     <div class="text-muted-bright">{{posts[0].time.date() | datetime}}</div>
                     <div class="lead">{{posts[0].short | safe}}</div>
                     <hr class="white-color">
-                    <a class="btn btn-info btn-lg" href=" {{  url_for('post_page', url=posts[0].url) }} " role="button">Read more...</a>
+                    <a class="btn btn-info btn-lg" href=" {{  url_for('post_page', url=posts[0].url) }} " role="button">Read
+                        more...</a>
                 </div>
                 <div style="margin: 60px 0;" class="col-md-5 text-center">
-                        <p class="anton" id="title-new">Newest one!</p>
-                    </div>
+                    <p class="anton" id="title-new">Newest one!</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <div class="container">
     <!--TODO: AJAX requests for posts-->
+    <div id="extra_posts_container" class="row"></div>
+    <button id="more_posts" class="btn btn-primary">Get more posts</button>
 </div>
-{% endblock content %}
+
+
+    <script>
+        $(document).ready(function () {
+            var n = 5;
+            $("#more_posts").click(function () {
+                $.getJSON('/api/' + n, function (data, status) {
+                    n += 5;
+                    var object = data;
+                    var posts = data.posts;
+                    var txt = '';
+                    var i = 0, length = data.posts.length;
+                    var options = { day: 'numeric', month: 'long', year: 'numeric' };
+                    for (i; i < length; i ++) {
+                        var time = new Date(posts[i].time);
+                        txt += '<div class="col-md-6"><div class="jumbotron" id="info-card"><h3 class="Playfair"><strong>'+posts[i].title+'</strong></h3><div class="text-muted">'+time.toLocaleDateString("en-US", options)+'</div>'+posts[i].short+'<hr class="white-color"><a class="btn btn-info btn-lg" href="'+posts[i].url+'" role="button">Read more...</a></div></div>';
+                    }
+                    $("#extra_posts_container").append(txt);
+                });
+            });
+        });
+    </script>
+    {% endblock content %}

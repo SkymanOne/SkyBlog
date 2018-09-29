@@ -18,9 +18,10 @@ def index():
     return render_template('index.html', posts=posts_list)
 
 
-@app.route('/<int:count>', methods=['POST', 'GET'])
+@app.route('/api/<int:count>', methods=['GET', 'POST'])
 def get_more_posts(count):
-    list_of_posts = Post.query.filter(Post.id > count).limit(5)
+    count_of_rows = Post.query.filter(-Post.id).count()
+    list_of_posts = Post.query.filter().limit(5)
     return jsonify({'posts': post_schema.dump(list_of_posts).data})
 
 
