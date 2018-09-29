@@ -4,6 +4,7 @@ from flask import render_template, flash, redirect, url_for, request, json, json
 from flask_login import login_user, current_user, login_required, logout_user
 from werkzeug.urls import url_parse
 from app.models import User
+from sqlalchemy import desc
 from app.forms import *
 from app.db_acces import *
 
@@ -14,14 +15,18 @@ post_schema = PostSchema(many=True)
 @app.route('/')
 @app.route('/index')
 def index():
-    posts_list = Post.query.order_by(-Post.id).limit(10)
+    count_of_posts = Post.query.count()
+    if count_of_posts < 3:
+        redirect(url_for('write_new_post'))
+    posts_list = Post.query.order_by(-Post.id).limit(3)
     return render_template('index.html', posts=posts_list)
 
 
 @app.route('/api/<int:count>', methods=['GET', 'POST'])
 def get_more_posts(count):
-    count_of_rows = Post.query.filter(-Post.id).count()
-    list_of_posts = Post.query.filter().limit(5)
+    count_of_rows = Post.query.filter(Post.id).count()
+    filter_number = count_of_rows - (count - 5 + 3)
+    list_of_posts = Post.query.filter(Post.id < filter_number).order_by(desc(Post.id)).limit(5)
     return jsonify({'posts': post_schema.dump(list_of_posts).data})
 
 

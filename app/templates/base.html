@@ -5,13 +5,14 @@
     <title>{% block title %}SkyBlog{% endblock %}</title>
     <script src={{ url_for('.static', filename='js/tinymce/tinymce.min.js')}}></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>tinymce.init({
         selector:'#body, #short',
         theme: 'modern',
         plugins: 'advlist autolink link image lists charmap print preview'});
     </script>
 
-    <link type="text/css" rel="stylesheet" href={{url_for('.static', filename='css/bootstrap.css')}}>
+    <link type="text/css" rel="stylesheet" href={{url_for('.static', filename='css/bootstrap.min.css')}}>
     <link href="https://fonts.googleapis.com/css?family=Anton|Oswald|Playfair+Display+SC|Poppins|Titillium+Web" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href={{url_for('.static', filename='css/style.css')}}>
 {% endblock %}

@@ -9,10 +9,10 @@ This projects is made for practice programming skills. I've decided to develop i
 * Post system
 	* Creating posts 🛠 (**done**)
 	* Editing posts 📝 (**done**)
-	* Deleting posts ❌
+	* Deleting posts ❌ (**done**)
 	* Tag system 📲 (**done**)
 	* Search by tags and names
-* Ajax queries
+* Ajax queries (**done**)
 * Comments (**done**)
 * Page about myself
 * Material design 

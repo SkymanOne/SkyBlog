@@ -18,7 +18,9 @@
         </div>
         <div class="col-md-6">
             <div class="jumbotron" id="info-card">
-                <h3 class="Playfair">{{posts[2].title}} </h3>
+                <h3 class="Playfair">
+                    <strong>{{posts[2].title}}</strong>
+                </h3>
                 <div class="text-muted">{{posts[2].time.date() | datetime}}</div>
                 {{posts[2].short | safe}}
                 <hr class="white-color">
@@ -49,7 +51,6 @@
     </div>
 </div>
 <div class="container">
-    <!--TODO: AJAX requests for posts-->
     <div id="extra_posts_container" class="row"></div>
     <button id="more_posts" class="btn btn-primary">Get more posts</button>
 </div>
