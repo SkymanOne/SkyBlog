@@ -4,6 +4,12 @@
 ## Introduction 
 This projects is made for practice programming skills. I've decided to develop it on Python (Flask Framework), because I needed light and castomisable tools, and the another reason was my preference to build something from nothing.
 
+
+### Mobile version
+<img width="182px" height="321px" src="Media/mobile_version_1.0.png"> </img>
+### Desktop version
+<img width="840" height="470" src="Media/desktop_version_1.0.png"></img>
+
 ## Goals
 * Login system (**done**)
 * Post system

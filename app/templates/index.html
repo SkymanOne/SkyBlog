@@ -2,12 +2,23 @@
 {% block title %}Main page{% endblock title %}
 {% block content %}
 <div style="padding-bottom: 15px;" class="container">
+    <div class="container">
+        <div class="row my-2 ">
+            <form class="form-inline col-md-4">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <div class="col-md-4">
+            <a class="btn btn-info" href="#">Subscribe</a>
+        </div>
+        </div>
+    </div>
     <div class="row">
         {% if post_list is not none %}
         <div class="col-md-6">
             <div class="jumbotron" id="info-card">
                 <h3 class="Playfair">
-                    <strong>{{posts[1].title}}</strong>
+                    <strong>{{posts[1].title}} </strong><span class="badge badge-success">New</span>
                 </h3>
                 <div class="text-muted">{{ posts[1].time.date() | datetime}}</div>
                 {{posts[1].short | safe}}
@@ -19,7 +30,7 @@
         <div class="col-md-6">
             <div class="jumbotron" id="info-card">
                 <h3 class="Playfair">
-                    <strong>{{posts[2].title}}</strong>
+                    <strong>{{posts[2].title}} </strong><span class="badge badge-success">New</span>
                 </h3>
                 <div class="text-muted">{{posts[2].time.date() | datetime}}</div>
                 {{posts[2].short | safe}}
@@ -35,7 +46,7 @@
             <div class="row">
                 <div class="col-md-7">
                     <h1 class="Playfair">
-                        <strong>{{posts[0].title}}</strong>
+                        <strong>{{posts[0].title}} </strong><span class="badge badge-success">New</span>
                     </h1>
                     <div class="text-muted-bright">{{posts[0].time.date() | datetime}}</div>
                     <div class="lead">{{posts[0].short | safe}}</div>
@@ -56,24 +67,24 @@
 </div>
 
 
-    <script>
-        $(document).ready(function () {
-            var n = 5;
-            $("#more_posts").click(function () {
-                $.getJSON('/api/' + n, function (data, status) {
-                    n += 5;
-                    var object = data;
-                    var posts = data.posts;
-                    var txt = '';
-                    var i = 0, length = data.posts.length;
-                    var options = { day: 'numeric', month: 'long', year: 'numeric' };
-                    for (i; i < length; i ++) {
-                        var time = new Date(posts[i].time);
-                        txt += '<div class="col-md-6"><div class="jumbotron" id="info-card"><h3 class="Playfair"><strong>'+posts[i].title+'</strong></h3><div class="text-muted">'+time.toLocaleDateString("en-US", options)+'</div>'+posts[i].short+'<hr class="white-color"><a class="btn btn-info btn-lg" href="'+posts[i].url+'" role="button">Read more...</a></div></div>';
-                    }
-                    $("#extra_posts_container").append(txt);
-                });
+<script>
+    $(document).ready(function () {
+        var n = 5;
+        $("#more_posts").click(function () {
+            $.getJSON('/api/' + n, function (data, status) {
+                n += 5;
+                var object = data;
+                var posts = data.posts;
+                var txt = '';
+                var i = 0, length = data.posts.length;
+                var options = { day: 'numeric', month: 'long', year: 'numeric' };
+                for (i; i < length; i++) {
+                    var time = new Date(posts[i].time);
+                    txt += '<div class="col-md-6"><div class="jumbotron" id="info-card"><h3 class="Playfair"><strong>' + posts[i].title + '</strong></h3><div class="text-muted">' + time.toLocaleDateString("en-US", options) + '</div>' + posts[i].short + '<hr class="white-color"><a class="btn btn-info btn-lg" href="' + posts[i].url + '" role="button">Read more...</a></div></div>';
+                }
+                $("#extra_posts_container").append(txt);
             });
         });
-    </script>
-    {% endblock content %}
+    });
+</script>
+{% endblock content %}
