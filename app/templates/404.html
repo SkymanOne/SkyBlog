@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<style>
+    #Error_body {
+        margin: 2% 0;
+    }
+</style>
+
+
+<div class="container">
+    <div class="alert alert-danger" id="Error_body">
+        <div class="">
+            <h1 class="">Ooops, something has gone wrong!</h1>
+            <p style="font-size: 1.5rem;">Sorry, this page doesn't exist</p>
+            <a class="btn btn-danger" href="/index">Return to main page</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

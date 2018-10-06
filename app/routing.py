@@ -1,6 +1,6 @@
 from app import app, db
 from app.models import *
-from flask import render_template, flash, redirect, url_for, request, json, jsonify
+from flask import render_template, flash, redirect, url_for, request, json, jsonify, abort
 from flask_login import login_user, current_user, login_required, logout_user
 from werkzeug.urls import url_parse
 from app.models import User
@@ -37,7 +37,7 @@ def post_page(url):
         return render_template('post.html', title=post.title, short=post.short,
                                content=post.body, time=post.time.date(), url=post.url)
     else:
-        return "404"
+        return abort(404)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -98,7 +98,7 @@ def get_edit_post(url):
         db.session.commit()
         return render_template('edit.html', form=form)
     else:
-        return "404"
+        return abort(404)
 
 
 @app.route('/edit/<string:url>', methods=['POST'])
@@ -125,7 +125,7 @@ def delete_post(url):
         form = DeleteForm()
         return render_template('delete.html', form=form, name=post.title)
     else:
-        return '404'
+        return abort(404)
 
 
 @app.route('/delete/<string:url>', methods=['POST'])
@@ -153,6 +153,11 @@ def success():
     result_title = 'Success!'
     result_text = 'Your post was created successful'
     return render_template('result.html', result_title=result_title, result_text=result_text)
+
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("404.html"), 404
 
 
 @app.route('/links')
