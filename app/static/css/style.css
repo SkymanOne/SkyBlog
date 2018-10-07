@@ -27,9 +27,42 @@ p > img {
     margin-bottom: 0!important;
 }
 
-#title-new {
-    margin: 15px 0px;
-    font-size: 3rem;
+@media(min-width: 600px){
+    #title-new {
+        margin: 15px 0px;
+        font-size: 3rem;
+}
+    .info-card {
+    padding: 3rem;
+    height: 300px;
+    background-color: #bfe39e!important;
+}
+    #sub {
+        text-align: right;
+    }
+}
+
+@media(max-width: 600px) {
+
+    #sub {
+        text-align: left;
+    }
+
+    .info-card {
+        padding: 1.5rem;
+        height: auto;
+        background-color: #bfe39e!important;
+    }
+
+    #title-new {
+        margin: 15px 0px;
+        font-size: 1.5rem;
+    }
+    
+    #github {
+        margin-top: 10px;
+    }
+
 }
 
 .lead {
@@ -82,13 +115,6 @@ p > img {
     text-decoration-style: initial;
     text-decoration-color: initial;
     background-color: transparent;
-}
-
-@media(min-width: 767px) {
-#info-card {
-    padding: 3rem;
-    height: 300px;
-}
 }
 
 #topics {
