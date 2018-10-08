@@ -9,7 +9,6 @@ from app.forms import *
 from app.db_acces import *
 
 post_schema = PostSchema(many=True)
-# TODO: make 404 page
 
 
 @app.route('/')
@@ -160,14 +159,20 @@ def not_found(e):
     return render_template("404.html"), 404
 
 
-@app.route('/links')
-def links():
-    return 'links'
-
-
 @app.route('/topics')
 def topics():
     return 'topics'
+
+
+@app.route('/topics/<string:name>')
+def get_list_of_posts_by_topic(name):
+    # TODO: make query of topic
+    pass
+
+
+@app.route('/links')
+def links():
+    return 'links'
 
 
 @app.route('/topics/<topic_name>')

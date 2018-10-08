@@ -22,9 +22,9 @@
 {% block navbar %}
 <div>
     <header class="blog-header py-3 bg-dark-green">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row flex-nowrap justify-content-between align-items-center">
-                <div class="col-sm-3" style="padding-left: 2.5rem"></div>
+                <div class="col-sm-3"></div>
                 <div class="col-sm-3 text-center">
                     <a class="blog-header-logo text-light" href="/">SkyBlog</a>
                 </div>
@@ -45,7 +45,7 @@
         <a class="text-topic text-muted col" href="/links">Links</a>
         <a class="text-topic text-muted col" href="/about">About me</a>
     </nav>
-    <div class="dropdown-divider"></div>
+    <hr style="margin: 0.5rem 0;">
 </div>
 {% endblock navbar %}
 {% with messages = get_flashed_messages() %}
@@ -76,7 +76,7 @@
             {% block content %}
             {% endblock %}
         </div>
-        <div class="col-md-3" id="github">
+        <div class="col-md-3 my-2" id="github">
             <div style="width:auto!important;" class="github-widget" data-username="SkymanOne"></div>
             <script src="https://unpkg.com/github-card@1.2.1/dist/widget.js"></script>
         </div>

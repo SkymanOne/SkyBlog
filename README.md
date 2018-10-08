@@ -22,6 +22,7 @@ This projects is made for practice programming skills. I've decided to develop i
 * Comments (**done**)
 * Page about myself
 * Material design 
+* RSS
 
 ## Cotribution 
 
