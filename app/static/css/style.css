@@ -19,6 +19,16 @@ p > img {
     background: white;
 }
 
+#me {
+    border-radius: 0.5rem;
+    padding: 10px;
+}
+
+#description {
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
 .github-widget {
     border: 0px!important;
 }

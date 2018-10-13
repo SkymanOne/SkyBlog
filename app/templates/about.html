@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}About me{% endblock title %}
+{% block content %}
+<div id="description" class="container">
+    <div class="row">
+        <div style="padding: 10px;" class="col-md-9">
+            <div class="container">
+            <h1>German Nikolishin</h1>
+            <h4>15 years old, Russia, enjoys programming</h4>
+            <p>I have been trying myself in programming since when I was 11. At this moment I wanted to make games and
+                started to discover how to do it. Few day later I realised I needed good programming skills for it and
+                started to immerse myself in the world of IT. Now I program on Python, I’ve done some orders and earned
+                money from it, but I have also got a lot of experience in using some other program languages.</p>
+            <br>
+            <h3>Experience</h3>
+            <ul>
+                <li>
+                    Program languages
+                    <ul>
+                        <li>C# - .NET Framework, .NET Core, ASP.NET MVC (Core), Entity Framework, UWP</li>
+                        <li>Java - Android SDK</li>
+                        <li>Python - Flask, Django, SQLAlchemy</li>
+                    </ul>
+                </li>
+                <li>
+                    Databases
+                    <ul>
+                        <li>MySQL</li>
+                        <li>SQLite</li>
+                        <li>Microsoft SQL Server</li>
+                    </ul>
+                </li>
+                <li>Version System Control: git</li>
+                <li>Knowledge of simple program algorithms and data structures</li>
+                <li>OS: Linux(Ubuntu), MacOS, Windows</li>
+                <li>Deploying web-applications on server and hosting</li>
+                <li>Working with Telegram Messenger Bot API</li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <img id="me" width="213,15" height="320" src={{url_for('.static', filename='images/me.jpg')}} />
+    </div>
+</div>
+</div>
+{% endblock content %}

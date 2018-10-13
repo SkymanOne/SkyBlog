@@ -159,6 +159,9 @@ def not_found(e):
     return render_template("404.html"), 404
 
 
+# TODO: finish other pages
+
+
 @app.route('/topics')
 def topics():
     return 'topics'
@@ -182,8 +185,7 @@ def info_of_topic(topic_name):
 
 @app.route('/about')
 def about():
-    return 'about'
-
+    return render_template('about.html')
 
 # Help methods
 
