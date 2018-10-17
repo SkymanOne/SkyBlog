@@ -24,9 +24,10 @@ p > img {
     padding: 10px;
 }
 
-#description {
+.layout {
     background-color: white;
     border-radius: 0.5rem;
+    padding: 10px;
 }
 
 .github-widget {

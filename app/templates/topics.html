@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div style="background-color:white;" class="container layout">
+        <h1>Topics</h1>
+        <h3>Here is list of all topics in the blog</h3>
+        <p>You can naviagte through posts by topics, just choose one</p>
+        <ul>
+            {%for topic in topics%}
+            <li><h3><a style="color: #17a2b8;" href="/topics/{{topic.name}}">{{topic.name}}</a></h3></li>
+            {%endfor%}
+        </ul>
+    </div>
+</div>
+{% endblock content %}

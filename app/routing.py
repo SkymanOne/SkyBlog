@@ -109,8 +109,9 @@ def post_edit_post(url):
     if form.validate_on_submit():
         edit_post_data(old_url, form.title.data, form.short.data, form.body.data)
         for t in separate_topics(form.topics.data):
-            topic = create_or_get_topic(t)
-            topic.posts.append(post)
+            if t is not " " or t is not "," or r is not ".":
+                topic = create_or_get_topic(t)
+                topic.posts.append(post)
         db.session.commit()
         return redirect('/success')
     return render_template('edit.html', form=form)
@@ -164,13 +165,18 @@ def not_found(e):
 
 @app.route('/topics')
 def topics():
-    return 'topics'
+    topics = get_list_of_topics()
+    return render_template('topics.html', topics=topics)
 
 
 @app.route('/topics/<string:name>')
 def get_list_of_posts_by_topic(name):
-    # TODO: make query of topic
-    pass
+    topic = get_topic(name)
+    if topic is None:
+        abort(404)
+    list_of_topics = get_list_of_posts(topic)
+    # TODO: page with posts realted to topic
+    abort(404)
 
 
 @app.route('/links')

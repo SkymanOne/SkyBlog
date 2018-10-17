@@ -51,7 +51,9 @@
     </div>
 </div>
 <div class="container">
-    <div style="text-align: center;" id="older_posts"></div>
+    <div style="text-align: center;" id="older_posts">
+            <h2 id="older" style="margin-bottom:20px;"><strong>Older posts</strong></h2>
+    </div>
     <div id="extra_posts_container" class="row"></div>
     <button id="more_posts" class="btn btn-primary">Get more posts</button>
 </div>
@@ -60,6 +62,7 @@
 <script>
     $(document).ready(function () {
         var n = 5;
+        $("#older").hide();
         $("#more_posts").click(function () {
             $.getJSON('/api/' + n, function (data, status) {
                 n += 5;
@@ -72,7 +75,7 @@
                     var time = new Date(posts[i].time);
                     txt += '<div class="col-md-6"><div class="jumbotron info-card"><h3 class="Playfair"><strong>' + posts[i].title + '</strong></h3><div class="text-muted">' + time.toLocaleDateString("en-US", options) + '</div>' + posts[i].short + '<hr class="white-color"><a class="btn btn-info btn-lg" href="' + posts[i].url + '" role="button">Read more...</a></div></div>';
                 }
-                $("#older_posts").append("<h2><strong>Older posts</strong></h2>")
+                $("#older").show();
                 $("#extra_posts_container").append(txt);
             });
         });

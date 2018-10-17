@@ -44,6 +44,10 @@ def get_topic(name):
     return Topic.query.filter_by(name=name).first()
 
 
+def get_list_of_topics():
+    return Topic.query.order_by()
+
+
 def create_or_get_topic(name):
     topic = get_topic(name)
     if topic is None:
@@ -55,3 +59,7 @@ def create_or_get_topic(name):
 
 def get_post(url):
     return Post.query.filter_by(url=url).first()
+
+
+def get_list_of_posts(topic):
+    return topic.posts
