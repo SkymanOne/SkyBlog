@@ -2,6 +2,10 @@ body {
     background: #e9ecef;
 }
 
+a {
+    color: #17a2b8;
+}
+
 .jambotron {
     padding-top: 10px;
 }

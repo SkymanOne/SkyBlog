@@ -160,9 +160,6 @@ def not_found(e):
     return render_template("404.html"), 404
 
 
-# TODO: finish other pages
-
-
 @app.route('/topics')
 def topics():
     topics = get_list_of_topics()
@@ -180,7 +177,7 @@ def get_list_of_posts_by_topic(name):
 
 @app.route('/links')
 def links():
-    return 'links'
+    return render_template('links.html')
 
 
 @app.route('/topics/<topic_name>')
