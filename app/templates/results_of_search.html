@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div style="padding:10px;" class="layout">
+        <h1>Results from request <span style="color:#1B5E20;">{{data}}</span></h1>
+        <div>
+            <h2>Topics: </h2>
+                {% if topics|length == 0%}
+                <h2><strong>No Results</strong></h2>
+                {% endif %}
+                <ul>
+                {% for t in topics %}
+                <li><h4><a style="color: #17a2b8;" href="/topics/{{t.name}}">{{t.name}}</a></h4></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h2>Posts:</h2>
+            {% if posts|length == 0%}
+                <h2><strong>No Results</strong></h2>
+                {% endif %}
+            {%for p in posts%}
+            <div class="">
+                <div class="jumbotron info-card">
+                    <h3 class="Playfair">
+                        <strong>{{p.title}} </strong>
+                    </h3>
+                    <div class="text-muted">{{ p.time.date() | datetime}}</div>
+                    {{p.short | safe}}
+                    <hr class="white-color">
+                    <a class="btn btn-info btn-lg" href=" {{  url_for('post_page', url=p.url) }} " role="button">Read
+                        more...</a>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+{% endblock content %}

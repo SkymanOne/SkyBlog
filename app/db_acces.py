@@ -48,6 +48,14 @@ def get_list_of_topics():
     return Topic.query.order_by()
 
 
+def get_list_of_topics_by_search(data):
+    return Topic.query.filter(Topic.name.startswith(data)).all()
+
+
+def get_list_of_posts_by_search(data):
+    return Post.query.filter(Post.title.startswith(data)).all()
+
+
 def create_or_get_topic(name):
     topic = get_topic(name)
     if topic is None:

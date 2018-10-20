@@ -175,6 +175,14 @@ def get_list_of_posts_by_topic(name):
     return render_template('posts_of_topic.html', posts=list_of_posts, topic=topic.name)
 
 
+@app.route('/search', methods=['POST'])
+def search():
+    data = request.form['search_data']
+    topics = get_list_of_topics_by_search(data)
+    posts = get_list_of_posts_by_search(data)
+    return render_template('results_of_search.html', posts=posts, topics=topics, data=data)
+
+
 @app.route('/links')
 def links():
     return render_template('links.html')
