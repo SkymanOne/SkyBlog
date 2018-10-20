@@ -169,14 +169,13 @@ def topics():
     return render_template('topics.html', topics=topics)
 
 
-@app.route('/topics/<string:name>')
+@app.route('/topics/<string:name>', methods=['GET'])
 def get_list_of_posts_by_topic(name):
     topic = get_topic(name)
     if topic is None:
         abort(404)
-    list_of_topics = get_list_of_posts(topic)
-    # TODO: page with posts realted to topic
-    abort(404)
+    list_of_posts = get_list_of_posts(topic)
+    return render_template('posts_of_topic.html', posts=list_of_posts, topic=topic.name)
 
 
 @app.route('/links')
