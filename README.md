@@ -2,7 +2,7 @@
 ![](https://img.shields.io/badge/status-done-red.svg) ![](https://img.shields.io/pypi/pyversions/Django.svg) ![](https://img.shields.io/badge/flask-0.11.x-blue.svg)
 
 ## Introduction 
-This projects is made for practice programming skills. I've decided to develop it on Python (Flask Framework), because I needed light and castomisable tools, and the another reason was my preference to build something from nothing.
+This projects is made for practice programming skills. I've decided to develop it on Python (Flask Framework), because I needed light and customisable tools, and the another reason was my preference to build something from nothing.
 
 
 ## List of dependencies
@@ -10,18 +10,18 @@ This projects is made for practice programming skills. I've decided to develop i
 * flask_sqlalchemy
 * flask_marshmallow
 
-## Update
+## Updates
 New design. Stable version has been developed
 
 ### Mobile version 2.0
-<img width="182px" height="321px" src="Media/mobile_version_2.0.png"> </img>
+<img width="auto" height="321px" src="Media/mobile_version_2.0.png"> </img>
 ### Desktop version 2.0
-<img width="840" height="470" src="Media/desktop_version_2.0.png"></img>
+<img width="auto" height="470" src="Media/desktop_version_2.0.png"></img>
 
 ### Mobile version 1.0
-<img width="182px" height="321px" src="Media/mobile_version_1.0.png"> </img>
+<img width="auto" height="321px" src="Media/mobile_version_1.0.png"> </img>
 ### Desktop version 1.0
-<img width="840" height="470" src="Media/desktop_version_1.0.png"></img>
+<img width="auto" height="470" src="Media/desktop_version_1.0.png"></img>
 
 ## Goals
 * Login system (**done**)
