@@ -45,9 +45,10 @@ Then migrate your databse in order to create tables from models: enter `flask db
 After that you need to create admin user in order to be able to create posts
 Run `python3` and insert following code
 ```python
->>> from app.models import User
+>>> from app.models import *
 >>> u = User(username='yourname', email='email@example.com')
 >>> u.set_password('yourpassword')
+>>> db.session.add(u)
 >>> db.session.commit()
 ```
 

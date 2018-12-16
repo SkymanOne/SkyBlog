@@ -2,9 +2,15 @@ from app.models import *
 from app import db
 
 
+def adapt_url(text):
+    for ch in ['\\', '`', '*', '{', '}', '[', ']', '(', ')', '>', '#', '+', '-', '.', '!', '?', '$', ' ', '\'', '@']:
+            text = text.replace(ch, '_')
+    return text
+
+
 def create_new_post(title, short, body, time, author):
     try:
-        url = title.replace(' ', '_')
+        url = adapt_url(title)
         new_post = Post(title=title, url=url, short=short, body=body,
                         time=time, author=author)
         db.session.add(new_post)
@@ -18,7 +24,7 @@ def edit_post_data(url, title, short, body):
     post = get_post(url)
     if post is not None:
         post.title = title
-        post.url = title.replace(' ', '_')
+        post.url = adapt_url(title)
         post.short = short
         post.body = body
         for t in post.topics:

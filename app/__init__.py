@@ -6,9 +6,7 @@ from config import Config
 from flask_marshmallow import Marshmallow
 
 app = Flask(__name__)
-app.env = 'development'
-app.debug = True
-app.testing = True
+app.env = 'production'
 app.config.from_object(Config)
 login = LoginManager(app)
 login.login_view = 'login'
