@@ -116,6 +116,6 @@ app/static/js/
 .vs/slnx.sqlite
 
 \.DS_Store
-\.migrations
+.migrations
 
 TODO
