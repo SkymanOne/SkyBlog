@@ -24,8 +24,8 @@ def index():
 @app.route('/api/<int:count>', methods=['GET', 'POST'])
 def get_more_posts(count):
     count_of_rows = Post.query.filter(Post.id).count()
-    filter_number = count_of_rows - (count - 5 + 3)
-    list_of_posts = Post.query.filter(Post.id < filter_number).order_by(desc(Post.id)).limit(4)
+    filter_number = count_of_rows - (3 + count - 4)
+    list_of_posts = Post.query.filter(Post.id <= filter_number).order_by(desc(Post.id)).limit(4)
     return jsonify({'posts': post_schema.dump(list_of_posts).data})
 
 

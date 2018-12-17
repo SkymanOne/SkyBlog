@@ -61,11 +61,11 @@
 
 <script>
     $(document).ready(function () {
-        var n = 5;
+        var n = 4;
         $("#older").hide();
         $("#more_posts").click(function () {
             $.getJSON('/api/' + n, function (data, status) {
-                n += 5;
+                n += 4;
                 var object = data;
                 var posts = data.posts;
                 var txt = '';
