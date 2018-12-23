@@ -119,3 +119,5 @@ app/static/js/
 .migrations
 
 TODO
+
+migrations/
